@@ -53,13 +53,11 @@ const Header = () => {
                                         ListVideo
                                     </NavLink>
                                 </li>
+                                
                                 <li>
-                                    <hr className="dropdown-divider" />
-                                </li>
-                                <li>
-                                    <a className="dropdown-item" href="#">
+                                    <NavLink className="dropdown-item" to="/main/sidebar">
                                         Something else here
-                                    </a>
+                                    </NavLink>
                                 </li>
                             </ul>
                         </li>

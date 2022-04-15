@@ -2,10 +2,10 @@
 // import { borderRadius, width } from '@mui/system'
 import React from 'react'
 import { Formik} from 'formik';
-
+import app_config from '../../config';
 
 const AddQuery = () => {
-
+ 
   const url = app_config.backend_url;
 
 
@@ -44,12 +44,12 @@ const AddQuery = () => {
               <form  onSubmit={handleSubmit} >
                 <div class="mb-3">
                   <label for="exampleFormControlInput1" class="form-label">Query</label>
-                  <input type="email" class="form-control"  placeholder="Enter Query Name" id="title" onChange={handleChange} value={values.title}  />
+                  <input type="text" class="form-control"  placeholder="Enter Query Name" id="title" onChange={handleChange} value={values.title}  />
                   <br></br>
                   <label for="exampleFormControlInput1" className='form-label'>Resource ID (Required) </label>
-                  <input type="email" className='form-control' placeholder='ID' id="data" onChange={handleChange} value={values.data}  />
+                  <input type="text" className='form-control' placeholder='ID' id="data" onChange={handleChange} value={values.data}  />
 
-                </div>
+                  </div>
                 <div class="mb-3">
                   <label for="exampleFormControlTextarea1" class="form-label">Description</label>
                   <textarea class="form-control" id="description" onChange={handleChange} value={values.description}  rows="3" />

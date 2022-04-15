@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom';
 
 const LoginPage = () => {
   const queryForm = {
-    fullName: "",
+    username: "",
     email: "",
     password: "",
     tags: [],
@@ -30,14 +30,14 @@ const LoginPage = () => {
             <form className='form-wrapper'  onSubmit={handleSubmit}>
               <div className='name'>
                 <label className='label'>Full Name</label>
-                <input className='input' type="text"  id="fullname" onChange={handleChange} value={values.fullname} />
+                <input className='input' type="text"  id="username" onChange={handleChange} value={values.username} />
               </div>
               <br>
               </br><br>
               </br>
               <div className='name'>
                 <label className='label'>Email</label>
-                <input className='input' type="text"   id="email" onChange={handleChange} value={values.email} />
+                <input className='input' type="text"   id="password" onChange={handleChange} value={values.password} />
               </div>
               <br/>
               <div className='name'>
