@@ -3,11 +3,12 @@ import React from 'react'
 import { NavLink } from 'react-router-dom';
 
 const LoginPage = () => {
+
+
   const queryForm = {
-    username: "",
+    
     email: "",
     password: "",
-    tags: [],
   }
 
   const querySubmit = (formdata) => {
@@ -37,12 +38,12 @@ const LoginPage = () => {
               </br>
               <div className='name'>
                 <label className='label'>Email</label>
-                <input className='input' type="text"   id="password" onChange={handleChange} value={values.password} />
+                <input className='input' type="email"   id="email" onChange={handleChange} value={values.email} />
               </div>
               <br/>
               <div className='name'>
                 <label className='label'>Password</label>
-                <input className='input' type="text"  id="password" onChange={handleChange} value={values.password} />
+                <input className='input' type="password"  id="password" onChange={handleChange} value={values.password} />
               </div>
               <label className='text-info'>Forgot password ?</label>
               <br></br>

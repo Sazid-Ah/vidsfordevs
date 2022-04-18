@@ -43,7 +43,7 @@ function ListVideo() {
                 </h4>
                 <p> in <span className='text-muted'>Web Development</span> </p>
                 <p>by Sazid Ahamad</p>
-                <button className='btn btn-primary float-end'>View Solution</button>
+                <button className='btn btn-primary float-end'   onClick={e => navigate('/main/viewvideo')} >View Solution</button>
               </div>
             </div>
           </div>
@@ -56,7 +56,7 @@ function ListVideo() {
                 </h4>
                 <p> in <span className='text-muted'>Web Development</span> </p>
                 <p>by Sazid Ahamad</p>
-                <button className='btn btn-primary float-end'>View Solution</button>
+                <button className='btn btn-primary float-end '  onClick={e => navigate('/main/viewvideo')} >View Solution</button>
               </div>
             </div>
           </div>
@@ -69,7 +69,7 @@ function ListVideo() {
                 </h4>
                 <p> in <span className='text-muted'>Web Development</span> </p>
                 <p>by Sazid Ahamad</p>
-                <button className='btn btn-primary float-end'>View Solution</button>
+                <button className='btn btn-primary float-end'  onClick={e => navigate('/main/viewvideo')}  >View Solution</button>
               </div>
             </div>
           </div>

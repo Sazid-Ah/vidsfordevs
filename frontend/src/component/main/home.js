@@ -4,17 +4,25 @@ const Home=()=> {
   return (
     <div  className='container my-3'>
         
+        
   <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
   <div class="carousel-inner">
+    
     <div class="carousel-item active">
       <img src="https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg" class="d-block w-100" alt="..."/>
+      
     </div>
     <div class="carousel-item"> 
       <img src="https://wallpaperaccess.com/full/2848798.jpg" class="d-block w-100" alt="..."/>
     </div>
+    
     <div class="carousel-item">
+      
       <img src="https://wallpaperaccess.com/full/427852.jpg" class="d-block w-100" alt="..."/>
     </div>
+
+    
+
   </div>
   <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
     <span class="carousel-control-prev-icon" aria-hidden="true"></span>

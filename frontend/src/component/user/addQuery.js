@@ -1,12 +1,15 @@
 // import { red } from '@mui/material/colors'
 // import { borderRadius, width } from '@mui/system'
-import React from 'react'
-import { Formik} from 'formik';
+import React, { useState } from 'react'
+import { Formik } from 'formik';
 import app_config from '../../config';
+import MDEditor from '@uiw/react-md-editor';
 
 const AddQuery = () => {
- 
+
   const url = app_config.backend_url;
+
+  const [query, setQuery] = useState("");
 
 
   const myStyle = {
@@ -19,15 +22,15 @@ const AddQuery = () => {
   const queryForm = {
     title: "",
     data: "",
-    dev: "",
+    dev: "6257c18cddb1136a34cea815",
     tags: [],
   }
 
   const querySubmit = (formdata) => {
     console.log(formdata);
-    fetch(url + '/user/add', { method: 'POST', body: JSON.stringify(formdata), headers: {'Content-Type' : 'application/json'} })
-    .then(res => res.json())
-    .then(data => console.log(data))
+    fetch(url + '/query/add', { method: 'POST', body: JSON.stringify(formdata), headers: { 'Content-Type': 'application/json' } })
+      .then(res => res.json())
+      .then(data => console.log(data))
   }
 
   return (
@@ -41,18 +44,18 @@ const AddQuery = () => {
 
           <Formik initialValues={queryForm} onSubmit={querySubmit}>
             {({ values, handleSubmit, handleChange }) => (
-              <form  onSubmit={handleSubmit} >
+              <form onSubmit={handleSubmit} >
                 <div class="mb-3">
                   <label for="exampleFormControlInput1" class="form-label">Query</label>
-                  <input type="text" class="form-control"  placeholder="Enter Query Name" id="title" onChange={handleChange} value={values.title}  />
+                  <input type="text" class="form-control" placeholder="Enter Query Name" id="title" onChange={handleChange} value={values.title} />
                   <br></br>
-                  <label for="exampleFormControlInput1" className='form-label'>Resource ID (Required) </label>
-                  <input type="text" className='form-control' placeholder='ID' id="data" onChange={handleChange} value={values.data}  />
-
-                  </div>
+                  
+                </div>
                 <div class="mb-3">
-                  <label for="exampleFormControlTextarea1" class="form-label">Description</label>
-                  <textarea class="form-control" id="description" onChange={handleChange} value={values.description}  rows="3" />
+                  <MDEditor
+                    value={query}
+                    onChange={setQuery}
+                  />
                 </div>
 
                 <button className='btn btn-primary'>Submit</button>

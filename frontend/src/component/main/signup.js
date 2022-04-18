@@ -31,9 +31,12 @@ function Signup() {
 
       <div className='app-wrapper margin  sm   md '>
         <div>
-          <h2 className='title'>Sign-up</h2>
+          <h2 className='title my-5'>Sign-up</h2>
         </div>
-        <button className='btn btn-outline-none text-white with '>Signup with google</button>
+        <div class="col-md  "> <a class="btn btn-lg btn-google btn-block  btn-outline my-1  w-100 " href="#"><img  className="img-fluid btn-lg   " src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/Facebook_icon.svg/768px-Facebook_icon.svg.png"/> Signup Using Facebook</a> </div>
+        <div class="col-md  "> <a class="btn btn-lg btn-github btn-block btn-outline my-1 bg-black  text-white w-100 " href="#"><img  className="img-fluid btn-lg   " src="https://www.logo.wine/a/logo/GitHub/GitHub-Icon-White-Dark-Background-Logo.wine.svg"/> Signup Using github</a> </div>
+        <div class="col-md  "> <a class="btn btn-lg btn-google btn-block  btn-outline my-1   w-100 " href="#"><img  className="img-fluid btn-lg  " src="https://www.freepnglogos.com/uploads/google-logo-png/google-logo-png-suite-everything-you-need-know-about-google-newest-0.png"/> Signup Using Google</a> </div>
+        
         <br></br>
 
         <Formik initialValues={signupForm} onSubmit={signupSubmit}

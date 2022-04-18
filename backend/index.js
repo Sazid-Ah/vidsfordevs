@@ -5,6 +5,7 @@ const port = 5000;
 const cors = require("cors");
 
 const userRouter = require("./routers/userRouter");
+const queryRouter = require("./routers/queryRouter");
 
 app.use(
   cors({
@@ -14,6 +15,7 @@ app.use(
 app.use(express.json());
 
 app.use("/user", userRouter);
+app.use("/query", queryRouter);
 
 app.listen(port, () => {
   console.log("server started");

@@ -16,6 +16,7 @@ import Home from "./component/main/home";
 import ListVideo from "./component/main/ListVideo";
 import ViewVideo from "./component/main/ViewVideo";
 import QueryListing from "./component/main/QueryListing";
+import About from "./component/main/About";
 
 function App() {
   return (
@@ -36,6 +37,7 @@ function App() {
               {/* main */}
             </Route>
             <Route element={<Main/>} path="main">
+              <Route   element={<About/>}  path="about"  />
               <Route element={<ListVideo/>} path="listvideo" />
               <Route element={<Home />} path="home" />
               <Route element={<LoginPage></LoginPage>} path="login" />
