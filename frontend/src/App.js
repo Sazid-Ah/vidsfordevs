@@ -14,13 +14,18 @@ import Main from "./component/main";
 import Home from "./component/main/home";
 
 import ListVideo from "./component/main/ListVideo";
-import ViewVideo from "./component/main/ViewVideo";
 import QueryListing from "./component/main/QueryListing";
 import About from "./component/main/About";
 import { Toaster } from "react-hot-toast";
 import ManageUser from "./component/admin/manageUsers";
+import ViewSolution from "./component/main/ViewSolution";
+import ViewQuery from "./component/main/viewQuery";
+import ManageQuery from "./component/admin/manageQuery";
+import en from "javascript-time-ago/locale/en.json";
+import TimeAgo from "javascript-time-ago";
 
 function App() {
+  TimeAgo.addDefaultLocale(en);
   return (
     <div>
       <div className="container-fluid">
@@ -37,6 +42,7 @@ function App() {
             <Route element={<Admin />} path="admin">
               <Route element={<AdminDashboard />} path="dashboard" />
               <Route element={<ManageUser />} path="manageuser" />
+              <Route element={<ManageQuery />} path="managequery" />
               {/* main */}
             </Route>
             <Route element={<Main />} path="main">
@@ -46,7 +52,8 @@ function App() {
               <Route element={<LoginPage></LoginPage>} path="login" />
               <Route element={<Signup></Signup>} path="signup" />
               <Route element={<QueryListing />} path="querylisting" />
-              <Route element={<ViewVideo />} path="viewvideo" />
+              <Route element={<ViewSolution />} path="viewsolution/:id" />
+              <Route element={<ViewQuery />} path="viewquery/:id" />
             </Route>
 
             <Route element={<Navigate to="/main/login" />} path="/" />

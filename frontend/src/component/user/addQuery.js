@@ -1,5 +1,3 @@
-// import { red } from '@mui/material/colors'
-// import { borderRadius, width } from '@mui/system'
 import React, { useState } from "react";
 import { Formik } from "formik";
 import app_config from "../../config";
@@ -12,6 +10,10 @@ const AddQuery = () => {
 
   const [query, setQuery] = useState("");
 
+  const [currentUser, setCurrentUser] = useState(
+    JSON.parse(sessionStorage.getItem("user"))
+  );
+
   const myStyle = {
     backgroundColor: "",
     color: "red",
@@ -21,11 +23,12 @@ const AddQuery = () => {
   const queryForm = {
     title: "",
     data: "",
-    dev: "6257c18cddb1136a34cea815",
+    dev: currentUser._id,
     tags: [],
   };
 
   const querySubmit = (formdata) => {
+    formdata.data = query;
     console.log(formdata);
     fetch(url + "/query/add", {
       method: "POST",
@@ -72,7 +75,7 @@ const AddQuery = () => {
                   <Autocomplete
                     className="mt-5"
                     multiple
-                    id="prerequisites"
+                    id="tags"
                     options={["JavaScript", "React", "MERN", "Python"].map(
                       (topic) => topic
                     )}
@@ -88,12 +91,12 @@ const AddQuery = () => {
                     }
                     renderInput={(params) => (
                       <TextField
-                        id="prerequisites"
-                        value={values.prerequisites}
+                        id="tags"
+                        value={values.tags}
                         onChange={handleChange}
                         {...params}
                         variant="filled"
-                        label="Select Prerequisites for this course"
+                        label="Tags for the Query"
                         placeholder="HTML, CSS etc."
                       />
                     )}

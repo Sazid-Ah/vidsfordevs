@@ -20,6 +20,11 @@ const Admin = () => {
       icon: <QuestionAnswer />,
       link: "/admin/manageuser",
     },
+    {
+      name: "Manage Query",
+      icon: <QuestionAnswer />,
+      link: "/admin/managequery",
+    },
   ];
 
   return (

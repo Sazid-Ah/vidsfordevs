@@ -1,12 +1,19 @@
-import { Chip } from "@mui/material";
+import { Avatar, Button, Chip, Divider, Typography } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import app_config from "../../config";
 import { useNavigate } from "react-router-dom";
+import MDEditor from "@uiw/react-md-editor";
+import { Box } from "@mui/system";
+import TimeAgo from "javascript-time-ago";
+import { ListAlt, QuestionAnswer } from "@mui/icons-material";
 
 const QueryListing = () => {
   const [queryList, setQueryList] = useState([]);
   const [loading, setLoading] = useState(true);
   const url = app_config.backend_url;
+
+  // Create formatter (English).
+  const timeAgo = new TimeAgo("en-US");
 
   const navigate = useNavigate();
 
@@ -26,27 +33,51 @@ const QueryListing = () => {
 
   const displayQueries = () => {
     if (!loading) {
-      return queryList.map(({ title, createAt, dev, _id }) => (
+      return queryList.map(({ title, createAt, dev, _id, data, tags }) => (
         <div className="card my-5">
           <div className="card-body">
-            <img
-              style={{ height: "40px" }}
-              className="img-fluid"
-              src="https://www.focusedu.org/wp-content/uploads/2018/12/circled-user-male-skin-type-1-2.png"
-            ></img>
-            <span>{dev.username}</span>
-            <div>{new Date(createAt).toLocaleDateString()}</div>
-            <div className="card-title">{title}</div>
-            <button
-              className="btn btn-primary  float-end"
-              onClick={(e) => navigate("/user/AddSolution/"+_id)}
-              
-            >
-              Provide Solution
-            </button>
-            <Chip label="Chip Filled" />
-            &nbsp;
-            <Chip label="Chip Filled" />
+            <h3>{title}</h3>
+
+            {tags.map((tag) => (
+              <Chip label={tag} variant="filled" />
+            ))}
+            <Divider className="mt-4 mb-4" />
+            <div>
+              <Box sx={{ display: "flex" }}>
+                <Avatar
+                  alt={dev.username}
+                  src={url + "/uploads/" + dev.avatar}
+                />
+
+                <Box sx={{ ml: 1 }}>
+                  <p style={{ marginBottom: 0 }}>{dev.username}</p>
+                  <Typography variant="caption">
+                    {/* {new Date(createAt).toLocaleDateString()} */}
+                    {timeAgo.format(new Date(createAt))}
+                  </Typography>
+                </Box>
+              </Box>
+
+              <Box sx={{ mt: 3 }}>
+                <Button
+                  variant="outlined"
+                  startIcon={<ListAlt />}
+                  sx={{ mx: 1 }}
+                  onClick={(e) => navigate("/main/viewquery/" + _id)}
+                >
+                  View Solutions
+                </Button>
+                <Button
+                  color="success"
+                  variant="outlined"
+                  startIcon={<QuestionAnswer />}
+                  sx={{ mx: 1 }}
+                  onClick={(e) => navigate("/user/AddSolution/" + _id)}
+                >
+                  Provide Solution
+                </Button>
+              </Box>
+            </div>
           </div>
         </div>
       ));

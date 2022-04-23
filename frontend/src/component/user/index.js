@@ -20,17 +20,6 @@ const User = () => {
       icon: <HelpOutline />,
       link: "/user/addquery",
     },
-    {
-      name: "Dashboard",
-      icon: <Dashboard />,
-      link: "/user/dashboard",
-    },
-
-    {
-      name: "Add Solution",
-      icon: <QuestionAnswer />,
-      link: "/user/AddSolution",
-    },
   ];
 
   return (
