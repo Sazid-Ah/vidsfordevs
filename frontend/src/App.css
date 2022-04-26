@@ -121,8 +121,6 @@ font-size: 16px;
   border: none;
   cursor: pointer;
   transition: all 0.1s;
-
-
 }
 button:active{
 
@@ -162,4 +160,8 @@ button:active{
 }
 .btn-lg{
   height: 50px;
+}
+
+.view-query, .list-query{
+  background: linear-gradient(to right,#ab1dcf,#f80759);
 }

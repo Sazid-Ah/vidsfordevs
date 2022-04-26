@@ -120,7 +120,11 @@ export default function Sidebar({ children, sidebarOptions, title }) {
   return (
     <Box sx={{ display: "flex" }}>
       <CssBaseline />
-      <AppBar position="fixed" open={open}>
+      <AppBar
+        position="fixed"
+        open={open}
+        sx={{ background: "#17130a", color: "#fdff98" }}
+      >
         <Toolbar sx={{ mr: 2 }}>
           <IconButton
             color="inherit"
@@ -169,7 +173,16 @@ export default function Sidebar({ children, sidebarOptions, title }) {
           </IconButton>
         </Toolbar>
       </AppBar>
-      <Drawer variant="permanent" open={open}>
+      <Drawer
+        variant="permanent"
+        open={open}
+        PaperProps={{
+          sx: {
+            backgroundColor: "#17130a",
+            color: "#fdff98",
+          },
+        }}
+      >
         <DrawerHeader>
           <IconButton onClick={handleDrawerClose}>
             {theme.direction === "rtl" ? <ChevronRight /> : <ChevronLeft />}
@@ -189,6 +202,7 @@ export default function Sidebar({ children, sidebarOptions, title }) {
             >
               <ListItemIcon
                 sx={{
+                  color: "#fdff98",
                   minWidth: 0,
                   mr: open ? 3 : "auto",
                   justifyContent: "center",

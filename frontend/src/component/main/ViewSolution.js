@@ -72,7 +72,7 @@ const ViewSolution = () => {
   const submitComment = () => {};
 
   return (
-    <Container>
+    <Container sx={{ mt: 10 }}>
       {displaySolution()}
       <Card>
         <CardContent>

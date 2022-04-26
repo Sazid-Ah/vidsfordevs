@@ -1,109 +1,81 @@
-import React from "react";
-import { NavLink } from "react-router-dom";
+import {
+  AppBar,
+  Avatar,
+  Box,
+  Button,
+  IconButton,
+  Toolbar,
+  Tooltip,
+  Typography,
+} from "@mui/material";
+import React, { useState } from "react";
+import { NavLink, useNavigate } from "react-router-dom";
+import app_config from "../../config";
 
 const Header = () => {
-  return (
-    <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
-      <div className="container-fluid">
-        <NavLink className="navbar-brand" to="/main/home">
-          Home
-        </NavLink>
-        <button
-          className="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarSupportedContent"
-          aria-controls="navbarSupportedContent"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span className="navbar-toggler-icon"></span>
-        </button>
-        <div className="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-            <li className="nav-item">
-              <NavLink
-                className="nav-link"
-                aria-current="page"
-                to="/main/querylisting"
-              >
-                Queries
-              </NavLink>
-            </li>
-            <li className="nav-item">
-              <a className="nav-link" href="#">
-                Product
-              </a>
-            </li>
-            <li className="nav-item dropdown">
-              <a
-                className="nav-link dropdown-toggle"
-                href="#"
-                id="navbarDropdown"
-                role="button"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
-              >
-                For Team
-              </a>
-              <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
-                <li>
-                  <NavLink className="dropdown-item" to="/main/QueryListing">
-                    QueryListing
-                  </NavLink>
-                </li>
-                <li>
-                  <NavLink className="dropdown-item" to="/main/ListVideo">
-                    ListVideo
-                  </NavLink>
-                </li>
+  const [currentUser, setCurrentUser] = useState(
+    JSON.parse(sessionStorage.getItem("user"))
+  );
+  console.log(currentUser);
+  const navigate = useNavigate();
+  const url = app_config.backend_url;
 
-                <li>
-                  <NavLink className="dropdown-item" to="/main/sidebar">
-                    Something else here
-                  </NavLink>
-                </li>
-              </ul>
-            </li>
-            <li className="nav-item">
-              <a
-                className="nav-link"
-                href="#"
-                tabindex="-1"
-                aria-disabled="false"
-              >
-                Disabled
-              </a>
-            </li>
-          </ul>
-          <form className="d-flex">
-            <input
-              className="form-control me-2 mx-5 "
-              type="search"
-              placeholder="Search"
-              aria-label="Search"
+  const openDashboard = () => {
+    if (localStorage.getItem("user") === null) {
+      navigate("/user/addquery");
+    }
+  };
+
+  return (
+    <AppBar sx={{ background: "#17130a", color: "#fdff98" }}>
+      <Toolbar sx={{ mr: 2 }}>
+        <Typography variant="h6" noWrap component="div" sx={{ flexGrow: 1 }}>
+          <b>Vids For Devs</b>
+        </Typography>
+
+        <Button
+          onClick={(e) => navigate("/main/home")}
+          color="inherit"
+          sx={{ mr: 3 }}
+        >
+          Home
+        </Button>
+        <Button
+          onClick={(e) => navigate("/main/querylisting")}
+          color="inherit"
+          sx={{ mr: 3 }}
+        >
+          View Queries
+        </Button>
+        <Box sx={{ flexGrow: 1 }} />
+
+        {currentUser ? (
+          <IconButton sx={{ p: 0 }} onClick={openDashboard}>
+            <Avatar
+              alt={currentUser.username}
+              src={url + "/uploads/" + currentUser.avatar}
             />
-            <button type="button" className="btn text-white btn-outline-info">
-              Search
-            </button>
-            <NavLink
-              className="btn bg-danger mx-4 text-white"
-              type="submit"
-              to="/main/Signup"
-            >
-              Signup
-            </NavLink>
-            <NavLink
-              className="btn bg-success  text-white  outline-success"
-              to="/main/Login"
-              type="submit"
+          </IconButton>
+        ) : (
+          <Box>
+            <Button
+              onClick={(e) => navigate("/main/login")}
+              color="inherit"
+              sx={{ mr: 3 }}
             >
               Login
-            </NavLink>
-          </form>
-        </div>
-      </div>
-    </nav>
+            </Button>
+            <Button
+              onClick={(e) => navigate("/main/signup")}
+              color="inherit"
+              sx={{ mr: 3 }}
+            >
+              Signup
+            </Button>
+          </Box>
+        )}
+      </Toolbar>
+    </AppBar>
   );
 };
 

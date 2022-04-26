@@ -12,6 +12,8 @@ const QueryListing = () => {
   const [loading, setLoading] = useState(true);
   const url = app_config.backend_url;
 
+  const [text, setText] = useState("");
+
   // Create formatter (English).
   const timeAgo = new TimeAgo("en-US");
 
@@ -24,6 +26,19 @@ const QueryListing = () => {
         console.log(data);
         setLoading(false);
         setQueryList(data);
+      });
+  };
+
+  const filterQueries = () => {
+    fetch(url + "/query/getall")
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        const re = data.filter(({ title }) => {
+          return title.toLowerCase().includes(text.toLowerCase());
+        });
+
+        setQueryList(re);
       });
   };
 
@@ -85,28 +100,26 @@ const QueryListing = () => {
   };
 
   return (
-    <div>
+    <div style={{ marginTop: "5rem" }} className="list-query">
       <header className="header bg-dark">
         <div className="container" style={{ padding: "5rem 0" }}>
+          <h3 className="text-light text-center">Search Programming Queries</h3>
           <div className="input-group">
-            <input className="form-control" placeholder="Search Tests Here" />
-            <button className="btn btn-primary">Search</button>
+            <input
+              value={text}
+              onChange={(e) => setText(e.target.value)}
+              className="form-control"
+              placeholder="Search Tests Here"
+            />
+            <button className="btn btn-primary" onClick={filterQueries}>
+              Search
+            </button>
           </div>
         </div>
       </header>
 
       <div className="container my-1" style={{ border: "1px solid gray" }}>
-        <div className="row">
-          <div className="col-md-3">
-            <div className="card" style={{ height: "50vh" }}>
-              <div className="card-body">
-                This is some text within a card body.
-              </div>
-            </div>
-          </div>
-
-          <div className="col-md-9">{displayQueries()}</div>
-        </div>
+        {displayQueries()}
       </div>
     </div>
   );

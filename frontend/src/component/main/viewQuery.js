@@ -9,6 +9,7 @@ import {
   Divider,
   Typography,
 } from "@mui/material";
+import MDEditor from "@uiw/react-md-editor";
 import TimeAgo from "javascript-time-ago";
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
@@ -23,8 +24,6 @@ const ViewQuery = () => {
   const navigate = useNavigate();
   const [solutions, setSolutions] = useState([]);
   const [solutionsLoading, setSolutionsLoading] = useState(true);
-
-  
 
   // Create formatter (English).
   const timeAgo = new TimeAgo("en-US");
@@ -59,28 +58,29 @@ const ViewQuery = () => {
   const displayQuery = () => {
     if (!loading) {
       return (
-        <Card className="query-card">
+        <Card className="query-card mt-5">
           <CardContent>
+            <h3>{queryData.title}</h3>
+
             {queryData.tags.map((tag) => (
               <Chip label={tag} variant="filled" />
             ))}
+            <MDEditor.Markdown className="mt-4" source={queryData.data} />
             <Divider className="mt-4 mb-4" />
-            <div>
-              <Box sx={{ display: "flex" }}>
-                <Avatar
-                  alt={queryData.dev.username}
-                  src={url + "/uploads/" + queryData.dev.avatar}
-                />
+            <Box sx={{ display: "flex" }}>
+              <Avatar
+                alt={queryData.dev.username}
+                src={url + "/uploads/" + queryData.dev.avatar}
+              />
 
-                <Box sx={{ ml: 1 }}>
-                  <p style={{ marginBottom: 0 }}>{queryData.dev.username}</p>
-                  <Typography variant="caption">
-                    {/* {new Date(createAt).toLocaleDateString()} */}
-                    {timeAgo.format(new Date(queryData.createAt))}
-                  </Typography>
-                </Box>
+              <Box sx={{ ml: 1 }}>
+                <p style={{ marginBottom: 0 }}>{queryData.dev.username}</p>
+                <Typography variant="caption">
+                  {/* {new Date(createAt).toLocaleDateString()} */}
+                  {timeAgo.format(new Date(queryData.createAt))}
+                </Typography>
               </Box>
-            </div>
+            </Box>
           </CardContent>
         </Card>
       );
@@ -90,22 +90,39 @@ const ViewQuery = () => {
   const displaySolutions = () => {
     if (!solutionsLoading) {
       return solutions.map((sol) => (
-        <Box component="div">
-          <Typography variant="h5">{sol.comment}</Typography>
-          <Box component="div" sx={{ display: "flex" }}>
-            <Avatar />
-            <p>{sol.uploadedBy.username}</p>
-          </Box>
-        </Box>
+        <Card className="mt-4">
+          <CardContent>
+            <Typography variant="h4">{sol.comment}</Typography>
+            <Button onClick={(e) => navigate("/main/viewsolution/" + sol._id)}>
+              View Solution
+            </Button>
+            <Box component="div" sx={{ display: "flex" }}>
+              <Avatar
+                alt={sol.uploadedBy.username}
+                src={url + "/uploads/" + sol.uploadedBy.avatar}
+              />
+              <Box sx={{ ml: 1 }}>
+                <p style={{ marginBottom: 0 }}>{sol.uploadedBy.username}</p>
+                <Typography variant="caption">
+                  {timeAgo.format(new Date(sol.uploadedBy.createAt))}
+                </Typography>
+              </Box>
+            </Box>
+          </CardContent>
+        </Card>
       ));
     }
   };
 
   return (
-    <Container>
-      {displayQuery()}
-      {displaySolutions()}
-    </Container>
+    <div className="view-query">
+      <Container sx={{ mt: 10 }}>
+        {displayQuery()}
+        <h2 className="mt-5 text-center">Solution Provided for this Query</h2>
+        <hr />
+        {displaySolutions()}
+      </Container>
+    </div>
   );
 };
 
