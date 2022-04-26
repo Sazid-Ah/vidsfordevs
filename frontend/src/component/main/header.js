@@ -32,7 +32,7 @@ const Header = () => {
         <Typography variant="h6" noWrap component="div" sx={{ flexGrow: 1 }}>
           <b>Vids For Devs</b>
         </Typography>
-
+        <Box sx={{ flexGrow: 1 }} />
         <Button
           onClick={(e) => navigate("/main/home")}
           color="inherit"
@@ -47,7 +47,6 @@ const Header = () => {
         >
           View Queries
         </Button>
-        <Box sx={{ flexGrow: 1 }} />
 
         {currentUser ? (
           <IconButton sx={{ p: 0 }} onClick={openDashboard}>

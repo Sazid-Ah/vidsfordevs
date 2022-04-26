@@ -1,26 +1,14 @@
-    import React from 'react'
-    
-    const Header=()=> {
-      return (
-      <div className='container'>
+import React from "react";
+import { Outlet } from "react-router-dom";
+
+const Header = () => {
+  return (
+    <div className="container">
       <div>
-            
-    <Outlet>
-
-  
-         
-
-
-    </Outlet>
-    
-                    
+        <Outlet></Outlet>
       </div>
+    </div>
+  );
+};
 
-
-
-
-        </div>
-      )
-    }
-    
-    export default Header;
+export default Header;
