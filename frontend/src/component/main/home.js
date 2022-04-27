@@ -1,7 +1,12 @@
 import "./home.css";
 import React from "react";
+import app_config from "../../config";
+import { useNavigate } from "react-router-dom";
 
 const Home = () => {
+  const url = app_config.backend_url;
+  const navigate = useNavigate();
+
   return (
     <>
       <section id="hero" class="hero d-flex align-items-center">
@@ -9,15 +14,16 @@ const Home = () => {
           <div class="row">
             <div class="col-lg-6 d-flex flex-column justify-content-center">
               <h1 data-aos="fade-up">
-                We offer modern solutions for growing your business
+                We provide a platform by and for Developers
               </h1>
               <h2 data-aos="fade-up" data-aos-delay="400">
-                We are team of talented designers making websites with Bootstrap
+                Here you can get all your problems solved in the form of videos
               </h2>
               <div data-aos="fade-up" data-aos-delay="600">
                 <div class="text-center text-lg-start">
                   <a
-                    href="#about"
+                    href=""
+                    onClick={(e) => navigate("/main/login")}
                     class="btn-get-started scrollto d-inline-flex align-items-center justify-content-center align-self-center"
                   >
                     <span>Get Started</span>
@@ -31,7 +37,11 @@ const Home = () => {
               data-aos="zoom-out"
               data-aos-delay="200"
             >
-              <img src="assets/img/hero-img.png" class="img-fluid" alt="" />
+              <img
+                src={url + "/images/hero-img.png"}
+                class="img-fluid"
+                alt=""
+              />
             </div>
           </div>
         </div>
@@ -49,21 +59,20 @@ const Home = () => {
                 <div class="content">
                   <h3>Who We Are</h3>
                   <h2>
-                    Expedita voluptas omnis cupiditate totam eveniet nobis sint
-                    iste. Dolores est repellat corrupti reprehenderit.
+                    We are a community of developers always ready to help new
+                    and stuggling developers and to build stronger community
                   </h2>
                   <p>
-                    Quisquam vel ut sint cum eos hic dolores aperiam. Sed
-                    deserunt et. Inventore et et dolor consequatur itaque ut
-                    voluptate sed et. Magnam nam ipsum tenetur suscipit
-                    voluptatum nam et est corrupti.
+                    This platform provides the service for asking queries and
+                    getting the solutions in the form of videos so that everyone
+                    can understand programming.
                   </p>
                   <div class="text-center text-lg-start">
                     <a
-                      href="#"
+                      onClick={(e) => navigate("/main/signup")}
                       class="btn-read-more d-inline-flex align-items-center justify-content-center align-self-center"
                     >
-                      <span>Read More</span>
+                      <span>Get Started</span>
                       <i class="bi bi-arrow-right"></i>
                     </a>
                   </div>
@@ -75,7 +84,7 @@ const Home = () => {
                 data-aos="zoom-out"
                 data-aos-delay="200"
               >
-                <img src="assets/img/about.jpg" class="img-fluid" alt="" />
+                <img src={url + "/images/about.jpg"} class="img-fluid" alt="" />
               </div>
             </div>
           </div>
@@ -83,18 +92,22 @@ const Home = () => {
         <section id="values" class="values">
           <div class="container" data-aos="fade-up">
             <header class="section-header">
-              <h2>Our Values</h2>
-              <p>Odit est perspiciatis laborum et dicta</p>
+              <h2>Our Features</h2>
+              <p>This is one the unique platforms present on internet</p>
             </header>
 
             <div class="row">
               <div class="col-lg-4" data-aos="fade-up" data-aos-delay="200">
                 <div class="box">
-                  <img src="assets/img/values-1.png" class="img-fluid" alt="" />
-                  <h3>Ad cupiditate sed est odio</h3>
+                  <img
+                    src={url + "/images/values-1.png"}
+                    class="img-fluid"
+                    alt=""
+                  />
+                  <h3>Ask Queries anytime</h3>
                   <p>
-                    Eum ad dolor et. Autem aut fugiat debitis voluptatem
-                    consequuntur sit. Et veritatis id.
+                    You can ask queries from the provided inreactive query
+                    creatoer so that anything is not missed.
                   </p>
                 </div>
               </div>
@@ -105,11 +118,15 @@ const Home = () => {
                 data-aos-delay="400"
               >
                 <div class="box">
-                  <img src="assets/img/values-2.png" class="img-fluid" alt="" />
-                  <h3>Voluptatem voluptatum alias</h3>
+                  <img
+                    src={url + "/images/values-2.png"}
+                    class="img-fluid"
+                    alt=""
+                  />
+                  <h3>Get Solutions in the forms of videos</h3>
                   <p>
-                    Repudiandae amet nihil natus in distinctio suscipit id.
-                    Doloremque ducimus ea sit non.
+                    Solutions in the form of text or code is not helpful so we
+                    provide a feature providing solution in video form.
                   </p>
                 </div>
               </div>
@@ -120,11 +137,15 @@ const Home = () => {
                 data-aos-delay="600"
               >
                 <div class="box">
-                  <img src="assets/img/values-3.png" class="img-fluid" alt="" />
-                  <h3>Fugit cupiditate alias nobis.</h3>
+                  <img
+                    src={url + "/images/values-3.png"}
+                    class="img-fluid"
+                    alt=""
+                  />
+                  <h3>Communicate with the community.</h3>
                   <p>
-                    Quam rem vitae est autem molestias explicabo debitis sint.
-                    Vero aliquid quidem commodi.
+                    There is a huge community of developers so you can
+                    communicate with them.
                   </p>
                 </div>
               </div>
@@ -208,7 +229,11 @@ const Home = () => {
 
             <div class="row">
               <div class="col-lg-6">
-                <img src="assets/img/features.png" class="img-fluid" alt="" />
+                <img
+                  src={url + "/images/features.png"}
+                  class="img-fluid"
+                  alt=""
+                />
               </div>
 
               <div class="col-lg-6 mt-5 mt-lg-0 d-flex">
@@ -399,7 +424,11 @@ const Home = () => {
               </div>
 
               <div class="col-lg-6">
-                <img src="assets/img/features-2.png" class="img-fluid" alt="" />
+                <img
+                  src={url + "/images/features-2.png"}
+                  class="img-fluid"
+                  alt=""
+                />
               </div>
             </div>
             <div class="row feature-icons" data-aos="fade-up">
@@ -632,157 +661,7 @@ const Home = () => {
             </div>
           </div>
         </section>
-        <section id="testimonials" class="testimonials">
-          <div class="container" data-aos="fade-up">
-            <header class="section-header">
-              <h2>Testimonials</h2>
-              <p>What they are saying about us</p>
-            </header>
 
-            <div
-              class="testimonials-slider swiper"
-              data-aos="fade-up"
-              data-aos-delay="200"
-            >
-              <div class="swiper-wrapper">
-                <div class="swiper-slide">
-                  <div class="testimonial-item">
-                    <div class="stars">
-                      <i class="bi bi-star-fill"></i>
-                      <i class="bi bi-star-fill"></i>
-                      <i class="bi bi-star-fill"></i>
-                      <i class="bi bi-star-fill"></i>
-                      <i class="bi bi-star-fill"></i>
-                    </div>
-                    <p>
-                      Proin iaculis purus consequat sem cure digni ssim donec
-                      porttitora entum suscipit rhoncus. Accusantium quam,
-                      ultricies eget id, aliquam eget nibh et. Maecen aliquam,
-                      risus at semper.
-                    </p>
-                    <div class="profile mt-auto">
-                      <img
-                        src="assets/img/testimonials/testimonials-1.jpg"
-                        class="testimonial-img"
-                        alt=""
-                      />
-                      <h3>Saul Goodman</h3>
-                      <h4>Ceo &amp; Founder</h4>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="swiper-slide">
-                  <div class="testimonial-item">
-                    <div class="stars">
-                      <i class="bi bi-star-fill"></i>
-                      <i class="bi bi-star-fill"></i>
-                      <i class="bi bi-star-fill"></i>
-                      <i class="bi bi-star-fill"></i>
-                      <i class="bi bi-star-fill"></i>
-                    </div>
-                    <p>
-                      Export tempor illum tamen malis malis eram quae irure esse
-                      labore quem cillum quid cillum eram malis quorum velit
-                      fore eram velit sunt aliqua noster fugiat irure amet legam
-                      anim culpa.
-                    </p>
-                    <div class="profile mt-auto">
-                      <img
-                        src="assets/img/testimonials/testimonials-2.jpg"
-                        class="testimonial-img"
-                        alt=""
-                      />
-                      <h3>Sara Wilsson</h3>
-                      <h4>Designer</h4>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="swiper-slide">
-                  <div class="testimonial-item">
-                    <div class="stars">
-                      <i class="bi bi-star-fill"></i>
-                      <i class="bi bi-star-fill"></i>
-                      <i class="bi bi-star-fill"></i>
-                      <i class="bi bi-star-fill"></i>
-                      <i class="bi bi-star-fill"></i>
-                    </div>
-                    <p>
-                      Enim nisi quem export duis labore cillum quae magna enim
-                      sint quorum nulla quem veniam duis minim tempor labore
-                      quem eram duis noster aute amet eram fore quis sint minim.
-                    </p>
-                    <div class="profile mt-auto">
-                      <img
-                        src="assets/img/testimonials/testimonials-3.jpg"
-                        class="testimonial-img"
-                        alt=""
-                      />
-                      <h3>Jena Karlis</h3>
-                      <h4>Store Owner</h4>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="swiper-slide">
-                  <div class="testimonial-item">
-                    <div class="stars">
-                      <i class="bi bi-star-fill"></i>
-                      <i class="bi bi-star-fill"></i>
-                      <i class="bi bi-star-fill"></i>
-                      <i class="bi bi-star-fill"></i>
-                      <i class="bi bi-star-fill"></i>
-                    </div>
-                    <p>
-                      Fugiat enim eram quae cillum dolore dolor amet nulla culpa
-                      multos export minim fugiat minim velit minim dolor enim
-                      duis veniam ipsum anim magna sunt elit fore quem dolore
-                      labore illum veniam.
-                    </p>
-                    <div class="profile mt-auto">
-                      <img
-                        src="assets/img/testimonials/testimonials-4.jpg"
-                        class="testimonial-img"
-                        alt=""
-                      />
-                      <h3>Matt Brandon</h3>
-                      <h4>Freelancer</h4>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="swiper-slide">
-                  <div class="testimonial-item">
-                    <div class="stars">
-                      <i class="bi bi-star-fill"></i>
-                      <i class="bi bi-star-fill"></i>
-                      <i class="bi bi-star-fill"></i>
-                      <i class="bi bi-star-fill"></i>
-                      <i class="bi bi-star-fill"></i>
-                    </div>
-                    <p>
-                      Quis quorum aliqua sint quem legam fore sunt eram irure
-                      aliqua veniam tempor noster veniam enim culpa labore duis
-                      sunt culpa nulla illum cillum fugiat legam esse veniam
-                      culpa fore nisi cillum quid.
-                    </p>
-                    <div class="profile mt-auto">
-                      <img
-                        src="assets/img/testimonials/testimonials-5.jpg"
-                        class="testimonial-img"
-                        alt=""
-                      />
-                      <h3>John Larson</h3>
-                      <h4>Entrepreneur</h4>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="swiper-pagination"></div>
-            </div>
-          </div>
-        </section>
         <section id="contact" class="contact">
           <div class="container" data-aos="fade-up">
             <header class="section-header">
